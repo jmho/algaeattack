@@ -2,7 +2,7 @@ import express from 'express';
 import dataProcessorRouter from './src/routes/dataProcessor';
 
 const app = express();
-const PORT = 3000;
+const PORT = 8000;
 
 async function main() {
 
