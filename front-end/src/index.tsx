@@ -6,8 +6,6 @@ import Main from "./pages/main";
 import NotFound from "./pages/404";
 import reportWebVitals from "./reportWebVitals";
 
-const homepageTitle = "test title";
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
