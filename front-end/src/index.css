@@ -1,16 +1,8 @@
-body{
+body {
   background-color: rgb(210, 250, 247);
 }
 
-.Main{
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-}
-
-.Header
-{
+.Header {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -18,10 +10,11 @@ body{
   border-bottom: 3px solid black;
   width: 100%;
   margin-bottom: 20px;
-  color: black; 
+  color: black;
   margin-left: 100px;
-  margin-right  : 100px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-right: 100px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   font-size: 15pt;
   background-image: url("images/algae.jpg");
 }
@@ -31,7 +24,7 @@ body{
   display: flex;
   flex: 1;
   flex-direction: row;
-  border:none;
+  border: none;
   border-radius: 10px;
   margin-left: 300px;
   margin-right: 300px;
@@ -45,7 +38,7 @@ body{
   margin-top: 21px;
   margin-right: 4px;
   border-left: 3px solid black;
-  padding: 20px
+  padding: 20px;
 }
 
 .AboutHeader {
@@ -54,7 +47,7 @@ body{
   font-size: 20pt;
 }
 
-.FooterDiv{
+.FooterDiv {
   display: flex;
   flex: 1;
   flex-direction: row;
@@ -68,10 +61,7 @@ body{
   border-radius: 10px;
 }
 
-.Footer {
-
- }
- .map-container {
+.map-container {
   display: flex;
   justify-content: center;
 }
@@ -79,4 +69,3 @@ body{
   height: 60vh;
   width: 80%;
 }
-
