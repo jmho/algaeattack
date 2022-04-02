@@ -2,17 +2,22 @@ body {
   background-color: rgb(210, 250, 247);
 }
 
-.Header {
+.Center{
   display: flex;
   flex: 1;
+  justify-content: center;
+}
+
+
+.Header {
+  display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   border-bottom: 3px solid black;
   width: 100%;
-  margin-bottom: 20px;
-  color: black;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-bottom: 50px;
+  color: white;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   font-size: 15pt;
@@ -22,12 +27,12 @@ body {
 .About {
   text-align: left;
   display: flex;
-  flex: 1;
   flex-direction: row;
   border: none;
   border-radius: 10px;
   margin-left: 300px;
   margin-right: 300px;
+  margin-bottom: 50px;
   background-color: rgb(147, 216, 215);
   font-family: arial;
   border-left: 3px solid black;
