@@ -1,24 +1,77 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body{
+  background-color: rgb(210, 250, 247);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
-.header {
+.Main{
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
 }
 
-.map-container {
+.Header
+{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 3px solid black;
+  width: 100%;
+  margin-bottom: 20px;
+  color: black; 
+  margin-left: 100px;
+  margin-right  : 100px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 15pt;
+  background-image: url("images/algae.jpg");
+}
+
+.About {
+  text-align: left;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  border:none;
+  border-radius: 10px;
+  margin-left: 300px;
+  margin-right: 300px;
+  background-color: rgb(147, 216, 215);
+  font-family: arial;
+  border-left: 3px solid black;
+}
+
+.AboutParagraph {
+  margin-left: 3px;
+  margin-top: 21px;
+  margin-right: 4px;
+  border-left: 3px solid black;
+  padding: 20px
+}
+
+.AboutHeader {
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 20pt;
+}
+
+.FooterDiv{
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0;
+  background-color: rgb(147, 216, 215);
+  padding-bottom: 10pt;
+  padding-top: 10pt;
+  padding-left: 40pt;
+  padding-right: 40pt;
+  border-radius: 10px;
+}
+
+.Footer {
+
+ }
+ .map-container {
   display: flex;
   justify-content: center;
 }
@@ -26,3 +79,4 @@ code {
   height: 60vh;
   width: 80%;
 }
+
