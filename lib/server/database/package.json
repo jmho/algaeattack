@@ -4,9 +4,7 @@
   "description": "",
   "main": "./build/index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node ./build/index.js",
-    "prestart": "npm run build"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
