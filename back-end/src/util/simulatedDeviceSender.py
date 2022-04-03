@@ -6,7 +6,6 @@ dataEntry = {
     "salinity": 1,
     "sampleDepth": 2,
     "waterTemp": 3,
-    "windSpeed": 7
 }
 
 x = requests.post(endpoint, json = dataEntry)

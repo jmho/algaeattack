@@ -1,6 +1,7 @@
 import express from "express";
 import dataProcessorRouter from "./src/routes/dataProcessor";
 import { connectToDb } from "database";
+import cors from "cors";
 
 const app = express();
 const PORT = 8000;
@@ -9,6 +10,8 @@ async function main() {
   await connectToDb();
 
   console.log("Connected to database.");
+
+  app.use(cors());
 
   app.use(express.json());
 

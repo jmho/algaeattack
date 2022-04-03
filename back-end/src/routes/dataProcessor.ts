@@ -4,6 +4,8 @@ import {
   addData,
   getDeviceList,
   addDevice,
+  getDeviceData,
+  getLastEntry,
 } from "database/build/src/deviceManager";
 
 const router = express.Router();
@@ -12,11 +14,16 @@ router.post("/deviceData", (req, res) => {
   res.send("Hello World!");
 });
 
-router.get("/mapData", (req, res) => {
+router.get("/mapData", async (req, res) => {
+  const deviceList = await getDeviceList();
+  let devicesArr = [];
+  for (let i = 0; i < deviceList.length; i++) {
+    devicesArr.push(await getDeviceData(deviceList[i]));
+  }
   return res.json(
     formatResponseBody({
       success: true,
-      data: null,
+      data: devicesArr,
     })
   );
 });
@@ -33,6 +40,21 @@ router.post("/logEntry", async (req, res) => {
   return res.json(
     formatResponseBody({ success: true, data: { message: "Success!" } })
   );
+});
+
+router.get("/getLastEntry", async (req, res) => {
+  const name: string = req.query.name as string;
+  const entries = await getLastEntry(name);
+  if (entries != null) {
+    const entry = entries[entries.length - 1];
+    return res.json(
+      formatResponseBody({
+        success: true,
+        data: entry,
+      })
+    );
+  }
+  return res.json(formatResponseBody({ success: false, error: [100] }));
 });
 
 router.get("/addUser", (req, res) => {

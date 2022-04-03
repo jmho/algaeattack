@@ -4,13 +4,12 @@ export interface EnvironmentVarEntry {
   salinity: number;
   sampleDepth: number;
   waterTemp: number;
-  windSpeed: number;
 }
 
 export interface LeanDevice {
   name: string;
-  lat: Number;
-  lng: Number;
+  lat: number;
+  lng: number;
   environmentVarList: [EnvironmentVarEntry];
 }
 
@@ -38,10 +37,6 @@ const deviceSchema = new mongoose.Schema<LeanDevice>({
         required: true,
       },
       waterTemp: {
-        type: Number,
-        required: true,
-      },
-      windSpeed: {
         type: Number,
         required: true,
       },

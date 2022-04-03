@@ -1,4 +1,4 @@
-import Device, { EnvironmentVarEntry } from "./models/Device";
+import Device, { EnvironmentVarEntry, LeanDevice } from "./models/Device";
 
 export async function addData(
   name: string,
@@ -19,10 +19,21 @@ export async function addData(
   }
 }
 
+export async function getDeviceData(name: string) {
+  return await Device.findOne({ name: name }).select("name lat lng").lean();
+}
+
 export async function getDeviceList() {
   const devices = await Device.find().select("name");
   const deviceNames = devices.map((device) => device.name);
   return deviceNames;
+}
+
+export async function getLastEntry(name: string) {
+  const vars: LeanDevice | null = await Device.findOne({
+    name: name,
+  }).select("environmentVarList");
+  return vars?.environmentVarList;
 }
 
 export async function addDevice(name: string, lat: number, lng: number) {

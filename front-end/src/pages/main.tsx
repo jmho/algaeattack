@@ -15,61 +15,58 @@ export default function Main() {
 
   return (
     <div>
-      <div className = "Center">
+      <div className="Center">
         <div className="Header">
-            <div className="HeaderText">
-              <h1><AiFillHome size="25px" className="HomeIcon"/>Home</h1>
-            </div>
+          <div className="HeaderText">
+            <h1>
+              <AiFillHome size="25px" className="HomeIcon" />
+              Home
+            </h1>
+          </div>
         </div>
       </div>
-      <div className = "Center">
-        <div  className = "Title">
-        <h1>Algae Attack</h1>
+      <div className="Center">
+        <div className="Title">
+          <h1>Algae Attack</h1>
         </div>
       </div>
-      <div className = "Center">
-        <h3>balls balls balls balls balls
-        balls balls balls balls balls
-        balls balls balls balls balls
+      <div className="Center">
+        <h3>
+          balls balls balls balls balls balls balls balls balls balls balls
+          balls balls balls balls
         </h3>
       </div>
-      <div className = "FlexRow">
+      <div className="FlexRow">
         <div className="About">
           <h3 className="AboutHeader">About </h3>
           <p className="AboutParagraph">
             {" "}
-            balls balls balls balls balls
-            balls balls balls balls balls
-            balls balls balls balls balls
-            balls balls balls balls balls
-            balls balls balls balls balls
-            balls balls balls balls balls
-            balls balls balls balls balls
+            balls balls balls balls balls balls balls balls balls balls balls
+            balls balls balls balls balls balls balls balls balls balls balls
+            balls balls balls balls balls balls balls balls balls balls balls
+            balls balls
           </p>
         </div>
         <div className="Resources">
-        <h3 className="AboutHeader">Resources </h3>
+          <h3 className="AboutHeader">Resources </h3>
           <p className="AboutParagraph">
             {" "}
-            balls balls balls balls balls
-            balls balls balls balls balls
-            balls balls balls balls balls
-            balls balls balls balls balls
-            balls balls balls balls balls
-            balls balls balls balls balls
-            balls balls balls balls balls
+            balls balls balls balls balls balls balls balls balls balls balls
+            balls balls balls balls balls balls balls balls balls balls balls
+            balls balls balls balls balls balls balls balls balls balls balls
+            balls balls
           </p>
         </div>
       </div>
-        {scriptLoaded && (
+      {scriptLoaded && (
         <Map mapType={google.maps.MapTypeId.ROADMAP} mapTypeControl={true} />
-          )}
-      <div className = "Center">
+      )}
+      <div className="Center">
         <div className="FooterDiv">
-            <GoMarkGithub />
-            <a target="_blank" href="https://github.com/jmho/algaeattack">
-              GitHub
-            </a>
+          <GoMarkGithub />
+          <a target="_blank" href="https://github.com/jmho/algaeattack">
+            GitHub
+          </a>
         </div>
       </div>
     </div>
