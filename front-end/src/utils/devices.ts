@@ -3,6 +3,8 @@ import {
   LeanDevice,
 } from "database/build/src/models/Device";
 import { NamedLatLng } from "../map";
+import * as tf from "@tensorflow/tfjs";
+import { Environment } from "@tensorflow/tfjs";
 
 interface SuccessResponseBody {
   success: true;
@@ -42,10 +44,7 @@ export async function getDevices() {
 
 export async function getCellCount(name: string) {
   const response = await fetch(
-    "http://localhost:8000/api/v1/dataProcessor/getLastEntry?" +
-      +new URLSearchParams({
-        name: name,
-      }),
+    "http://localhost:8000/api/v1/dataProcessor/getLastEntry?name=" + name,
     {
       method: "GET",
       headers: {
@@ -57,7 +56,23 @@ export async function getCellCount(name: string) {
   if (response.status === 200) {
     const body: SuccessResponseBody = await response.json();
 
+    const model = await tf.loadLayersModel("/tfjs_model/model.json");
+
     const deviceList: EnvironmentVarEntry =
       (await body.data) as EnvironmentVarEntry;
+
+    if (
+      deviceList &&
+      deviceList.salinity != null &&
+      deviceList.sampleDepth != null &&
+      deviceList.waterTemp != null
+    ) {
+      const X = tf.tensor(
+        [deviceList.salinity, deviceList.sampleDepth, deviceList.waterTemp],
+        [1, 3]
+      );
+      return await model.predict(X);
+    }
+    return null;
   }
 }

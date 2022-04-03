@@ -1,5 +1,6 @@
+import { Tensor } from "@tensorflow/tfjs";
 import React, { useEffect, useRef, useState } from "react";
-import { getDevices } from "./utils/devices";
+import { getCellCount, getDevices } from "./utils/devices";
 
 interface IMap {
   mapType: google.maps.MapTypeId;
@@ -12,12 +13,13 @@ interface IMarker {
 }
 
 export interface NamedLatLng {
-  name: String;
+  name: string;
   position: GoogleLatLng;
+  color?: number;
 }
 
 interface NamedMarker {
-  name: String;
+  name: string;
   marker: GoogleMarker;
 }
 
@@ -39,6 +41,20 @@ const Map: React.FC<IMap> = ({ mapType, mapTypeControl = false }) => {
       if (namedMarkers) {
         namedLatLng = namedMarkers;
         for (let i = 0; i < namedLatLng.length; i++) {
+          console.log(namedLatLng[i].name);
+          getCellCount(namedLatLng[i].name).then((cellCount) => {
+            if (cellCount) {
+              const cellCountTen: Tensor = cellCount as Tensor;
+              const cellCountArr: Float32Array =
+                cellCountTen.dataSync() as Float32Array;
+              const algaeRiskLevel = cellCountArr.reduce(
+                (iMax, x, i, arr) => (x > arr[iMax] ? i : iMax),
+                0
+              );
+              console.log("Risk: " + algaeRiskLevel);
+              namedLatLng[i].color = (255 / 5) * algaeRiskLevel;
+            }
+          });
           addMarker(namedLatLng[i]);
         }
       }
@@ -47,8 +63,8 @@ const Map: React.FC<IMap> = ({ mapType, mapTypeControl = false }) => {
   useEffect(startMap, [map]);
 
   // setInterval(async () => {
-  //   if (markers.length > 0) {
-  //     markers[0].marker.setIcon(getIconAttributes("#ff0000"));
+  //   for(let i = 0; i< markers.length; i ++){
+
   //   }
   // }, 1000);
 
@@ -57,12 +73,16 @@ const Map: React.FC<IMap> = ({ mapType, mapTypeControl = false }) => {
     initMap(6.5, defaultAddress);
   };
 
+  function rgbToHex(r: number, g: number, b: number) {
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+  }
+
   const addMarker = (namedLL: NamedLatLng): void => {
     const marker: GoogleMarker = new google.maps.Circle({
-      strokeColor: "#FF0000",
+      strokeColor: rgbToHex(namedLL.color || 0, 0, 0),
       strokeOpacity: 0.8,
       strokeWeight: 2,
-      fillColor: "#FF0000",
+      fillColor: rgbToHex(namedLL.color || 0, 0, 0),
       fillOpacity: 0.35,
       map,
       center: namedLL.position,
