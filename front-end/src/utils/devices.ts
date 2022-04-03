@@ -4,7 +4,7 @@ import {
 } from "database/build/src/models/Device";
 import { NamedLatLng } from "../map";
 import * as tf from "@tensorflow/tfjs";
-import { Environment } from "@tensorflow/tfjs";
+import { Environment, Tensor } from "@tensorflow/tfjs";
 
 interface SuccessResponseBody {
   success: true;
@@ -35,6 +35,7 @@ export async function getDevices() {
       const marker = {
         name: deviceList[i].name,
         position: new google.maps.LatLng(deviceList[i].lat, deviceList[i].lng),
+        color: "#ffff00",
       };
       markers.push(marker);
     }
@@ -60,7 +61,7 @@ export async function getCellCount(name: string) {
 
     const deviceList: EnvironmentVarEntry =
       (await body.data) as EnvironmentVarEntry;
-
+    let algaeRiskLevel: number;
     if (
       deviceList &&
       deviceList.salinity != null &&
@@ -71,8 +72,20 @@ export async function getCellCount(name: string) {
         [deviceList.salinity, deviceList.sampleDepth, deviceList.waterTemp],
         [1, 3]
       );
-      return await model.predict(X);
+      const cellCount = await model.predict(X);
+
+      if (cellCount) {
+        const cellCountTen: Tensor = cellCount as Tensor;
+        const cellCountArr: Float32Array =
+          cellCountTen.dataSync() as Float32Array;
+        algaeRiskLevel = cellCountArr.reduce(
+          (iMax, x, i, arr) => (x > arr[iMax] ? i : iMax),
+          0
+        );
+        algaeRiskLevel++;
+      }
     }
-    return null;
+    algaeRiskLevel = deviceList.sampleDepth;
+    return algaeRiskLevel;
   }
 }
