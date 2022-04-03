@@ -1,76 +1,158 @@
 body {
-  background-color: rgb(210, 250, 247);
+  background-color: #f6fcf5;
 }
 
-.Center{
+.center{
   display: flex;
   flex: 1;
   justify-content: center;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+}
+
+.title{
+  font-size: 20pt;
 }
 
 
-.Header {
+.header {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 3px solid black;
+  align-items: left;
+  justify-content: left;
   width: 100%;
-  margin-bottom: 50px;
-  color: white;
+  margin-bottom: 35px;
+  color: black;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  font-size: 15pt;
-  background-image: url("images/algae.jpg");
+  font-size: 10pt;
+  background-color: rgb(216, 243, 227);
+  box-shadow: 3px 2px 3px rgba(0,0,0,.5);
 }
 
-.About {
+.header-text {
+  margin-left: 50px;
+}
+
+.home-icon {
+  margin-right: 10px;
+}
+
+.problem-icon{
+  margin-top: 50px;
+  margin-left: 30px;
+  color: red;
+}
+
+.solution-icon{
+  margin-top: 50px;
+  margin-left: 30px;
+  color: green;
+}
+
+.flex-row{
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.problem {
   text-align: left;
   display: flex;
-  flex-direction: row;
+  flex: 1;
   border: none;
   border-radius: 10px;
-  margin-left: 300px;
-  margin-right: 300px;
-  margin-bottom: 50px;
-  background-color: rgb(147, 216, 215);
+  margin-top: 35px;
+  margin-right: 30px;
+  margin-left: 150px;
+  background-color: rgb(216, 243, 227);
   font-family: arial;
-  border-left: 3px solid black;
+  box-shadow: 3px 2px 3px rgba(0,0,0,.5);
 }
 
-.AboutParagraph {
+.solution {
+  text-align: left;
+  display: flex;
+  flex: 1;
+  border: none;
+  border-radius: 10px;
+  margin-top: 35px;
+  margin-right: 150px;
+  margin-left: 30px;
+  background-color: rgb(216, 243, 227);
+  font-family: arial;
+  box-shadow: 3px 2px 3px rgba(0,0,0,.5);
+}
+
+.problem-paragraph {
   margin-left: 3px;
-  margin-top: 21px;
+  margin-top: 12px;
   margin-right: 4px;
   border-left: 3px solid black;
   padding: 20px;
 }
 
-.AboutHeader {
+.problem-header {
   margin-left: 20px;
   margin-right: 20px;
   font-size: 20pt;
 }
 
-.FooterDiv {
+.menu {
+  flex: 1;
+  background-color: black;
+  margin-right: 50px;
+  border-radius: 30px;
+}
+
+.footer-container {
   display: flex;
   flex: 1;
   flex-direction: row;
-  position: fixed;
-  bottom: 0;
-  background-color: rgb(147, 216, 215);
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
   padding-bottom: 10pt;
   padding-top: 10pt;
   padding-left: 40pt;
   padding-right: 40pt;
   border-radius: 10px;
+  border-color: black;
+}
+
+.resources{
+  text-align: left;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  border: none;
+  border-radius: 10px;
+  margin-right: 150px;
+  margin-left: 150px;
+  margin-bottom: 100px;
+  background-color: rgb(216, 243, 227);
+  font-family: arial;
+  box-shadow: 3px 2px 3px rgba(0,0,0,.5);
+}
+
+.resources-header{
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 20pt;
+  border-bottom: 3px solid black;
+}
+
+.resources-paragraph {
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .map-container {
   display: flex;
+  flex: 7;
   justify-content: center;
+  padding: 100px;
 }
 .map {
+  display: flex;
+  flex: 1;
   height: 60vh;
-  width: 80%;
 }
